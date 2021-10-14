@@ -280,14 +280,15 @@ def main(args):
     # result_process = qout.get()
 
 
-    section_1_response = question_contours.omrResponse(open_cv_image.copy())
-
-    registration_id = registration_number_response.getData(open_cv_image.copy())
-    print("[x] Registration id is ", registration_id)
-
-    print("[x] Section A response is:", section_1_response)
+    section_response = question_contours.omrResponse(open_cv_image.copy())
 
     qpid = qpid_response.extractQPID(open_cv_image.copy(), config.qpid_cords)
+    registration_id = registration_number_response.getData(open_cv_image.copy())
+    print("[x] Registration id is ", registration_id)
+    print("[x] Final QPID Code is", qpid)
+    print("[x] Section A response is:", section_response)
+
+
 
     process_1.join()
     process_2.join()
